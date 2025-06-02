@@ -60,11 +60,11 @@ public:
 	}
 };
 
-class Triangele :  public Figure
+class Triangle :  public Figure
 {
 public:
-	Triangele() {}
-	Triangele(int side_a, int side_b, int side_c, int corner_A, int corner_B, int corner_C) 
+	Triangle() {}
+	Triangle(int side_a, int side_b, int side_c, int corner_A, int corner_B, int corner_C) 
 	{
 		name_ = "Треугольник";
 		sides_count_ = 3;
@@ -104,7 +104,7 @@ public:
 	}
 };
 
-class RightTriangle : public Triangele
+class RightTriangle : public Triangle
 {
 public:
 	RightTriangle(int side_a, int side_b, int side_c, int corner_A, int corner_B, int corner_C)
@@ -120,7 +120,7 @@ public:
 	}
 	virtual bool check()
 	{
-		if (corner_C_ == 90)
+		if (Triangle::check() && corner_C_ == 90)
 		{
 			return true;
 		}
@@ -147,7 +147,7 @@ public:
 	}
 };
 
-class IsoscelesTriangle : public Triangele
+class IsoscelesTriangle : public Triangle
 {
 public:
 	IsoscelesTriangle(int side_a, int side_b, int side_c, int corner_A, int corner_B, int corner_C)
@@ -163,7 +163,7 @@ public:
 	}
 	virtual bool check()
 	{
-		if ((side_a_ == side_c_) && (corner_A_ == corner_C_))
+		if (Triangle::check() && (side_a_ == side_c_) && (corner_A_ == corner_C_))
 		{
 			return true;
 		}
@@ -190,7 +190,7 @@ public:
 	}
 };
 
-class EquilateralTriangle : public Triangele
+class EquilateralTriangle : public Triangle
 {
 public:
 	EquilateralTriangle(int side_a, int side_b, int side_c, int corner_A, int corner_B, int corner_C)
@@ -206,7 +206,7 @@ public:
 	}
 	virtual bool check()
 	{
-		if ((side_a_ == side_b_) && (side_b_ == side_c_) && (corner_A_ == corner_B_) && (corner_B_ == corner_C_) && corner_A_ == 60)
+		if (Triangle::check() && (side_a_ == side_b_) && (side_b_ == side_c_) && (corner_A_ == corner_B_) && (corner_B_ == corner_C_) && corner_A_ == 60)
 		{
 			return true;
 		}
@@ -297,7 +297,7 @@ public:
 	}
 	virtual bool check()
 	{
-		if ((side_a_ == side_c_) && (side_b_ == side_d_) && (corner_A_ == corner_B_) && (corner_B_ == corner_C_) && (corner_C_ == corner_D_) && corner_A_ == 90)
+		if (Quadrilateral::check() && (side_a_ == side_c_) && (side_b_ == side_d_) && (corner_A_ == corner_B_) && (corner_B_ == corner_C_) && (corner_C_ == corner_D_) && corner_A_ == 90)
 		{
 			return true;
 		}
@@ -342,7 +342,7 @@ public:
 	}
 	virtual bool check()
 	{
-		if ((side_a_ == side_c_) && (side_c_ == side_b_) && (side_b_ == side_d_) && (corner_A_ == corner_B_) && (corner_B_ == corner_C_) && (corner_C_ == corner_D_) && corner_A_ == 90)
+		if (Quadrilateral::check() && (side_a_ == side_c_) && (side_c_ == side_b_) && (side_b_ == side_d_) && (corner_A_ == corner_B_) && (corner_B_ == corner_C_) && (corner_C_ == corner_D_) && corner_A_ == 90)
 		{
 			return true;
 		}
@@ -387,7 +387,7 @@ public:
 	}
 	virtual bool check()
 	{
-		if ((side_a_ == side_c_) && (side_b_ == side_d_) && (corner_A_ == corner_C_) && (corner_B_ == corner_D_))
+		if (Quadrilateral::check() && (side_a_ == side_c_) && (side_b_ == side_d_) && (corner_A_ == corner_C_) && (corner_B_ == corner_D_))
 		{
 			return true;
 		}
@@ -432,7 +432,7 @@ public:
 	}
 	virtual bool check()
 	{
-		if ((side_a_ == side_c_) && (side_c_ == side_b_) && (side_b_ == side_d_) && (corner_A_ == corner_C_) && (corner_B_ == corner_D_))
+		if (Quadrilateral::check() && (side_a_ == side_c_) && (side_c_ == side_b_) && (side_b_ == side_d_) && (corner_A_ == corner_C_) && (corner_B_ == corner_D_))
 		{
 			return true;
 		}
@@ -464,7 +464,7 @@ int main()
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 	Figure F;
-	Triangele T (10, 20, 30, 50, 60, 70);
+	Triangle T (10, 20, 30, 50, 60, 70);
 	RightTriangle RT (10, 20, 30, 50, 60, 90);
 	IsoscelesTriangle IT (10, 20, 10, 50, 60, 50);
 	EquilateralTriangle ET (30, 30, 30, 60, 60, 60);
